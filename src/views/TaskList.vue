@@ -1,9 +1,9 @@
 <template>
   <ul class="list-group max-size-list m-auto mt-4">
-    <transition v-for="todo in todoList" :key="todo.id" appear mode="out-in">
+    <transition v-for="(todo, index) in sortedTasks" :key="index" appear mode="out-in">
       <li class="list-group-item py-3">
         <div>
-          <label>{{ todo.title }}</label>
+          <label :class="{ 'todo-completed': todo.completed }">{{ todo.title }}</label>
         </div>
       </li>
       </transition>
@@ -13,7 +13,18 @@
 <script>
   export default {
     name: 'TaskList',
-    props: ["todoList"]
+    props: ["todoList"],
+    computed:{
+      sortedTasks: function(){
+        let sorted = this.todoList.slice()
+        return sorted.sort(function(a, b){
+          if (a.title < b.title) return -1
+          if (a.title > b.title) return 1
+          
+          return 0
+        })
+      }
+    }
   }
 </script>
 
