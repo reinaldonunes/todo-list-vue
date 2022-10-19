@@ -3,7 +3,9 @@
     <transition v-for="(todo, index) in sortedTasks" :key="index" appear mode="out-in">
       <li class="list-group-item py-3">
         <div>
-          <label :class="{ 'todo-completed': todo.completed }">{{ todo.title }}</label>
+          <input type="checkbox" class="form-check-input me-2" @click="completeTask(todo)" :checked="todo.completed"  />
+          <label v-if="todo.completed" class="todo-completed">{{ todo.title }}</label>
+          <label v-else>{{ todo.title }}</label>
         </div>
       </li>
       </transition>
@@ -14,6 +16,11 @@
   export default {
     name: 'TaskList',
     props: ["todoList"],
+    data(){
+      return{
+        isChecked: ''
+      }
+    },
     computed:{
       sortedTasks: function(){
         let sorted = this.todoList.slice()
@@ -24,13 +31,23 @@
           return 0
         })
       }
+    },
+    methods:{
+      completeTask(task){
+        task.completed = !task.completed
+      }
     }
   }
 </script>
 
 <style scoped>
   .max-size-list{
-    max-width:700px;
+    max-width:655px;
+  }
+
+  .todo-completed{
+    text-decoration: line-through;
+    color:#6598a2;
   }
 
   .v-enter,
