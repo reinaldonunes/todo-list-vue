@@ -7,6 +7,12 @@ import router from './router.js';
 Vue.use(VueResource)
 Vue.config.productionTip = false
 
+Vue.directive('focus',{
+  inserted: function(el){
+    el.focus()
+  }
+})
+
 new Vue({
   router,
   VueResource,

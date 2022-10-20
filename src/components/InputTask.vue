@@ -5,6 +5,7 @@
       class="form-control p-3 w-50 m-auto mt-4" 
       placeholder="O que precisa ser feito?"
       @keyup.enter="addTask"
+      v-focus
     />
   </div>
 </template>
@@ -22,7 +23,7 @@
     methods: {
       addTask($event){
         let value = $event.target.value
-        let task = this.createTask(value)
+        let task = value != '' ? this.createTask(value) : alert('Preencha o campo, por favor.')
         this.broadCast(task)
         this.clearField($event)
       },
