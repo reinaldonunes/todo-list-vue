@@ -3,7 +3,9 @@
     <transition mode="out-in">
       <router-view></router-view>
     </transition>
-    <FooterView>&copy; Alguns direitos reservados - ToDo List License</FooterView>
+    <FooterView>
+      <p>&copy; Alguns direitos reservados - ToDo List License</p>
+    </FooterView>
   </section>
 </template>
 
@@ -19,6 +21,11 @@
     },
     components: {
         FooterView
+    },
+    computed:{
+      doneTodosCount(){
+        return this.$store.state.todos.filter(todo => todo.completed).length
+      }
     }
 
   }

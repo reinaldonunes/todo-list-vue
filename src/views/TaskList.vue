@@ -1,5 +1,5 @@
 <template>
-  <ul class="list-group max-size-list m-auto mt-4">
+  <ul class="list-group max-size-list m-auto mt-4 mb-4">
     <transition v-for="(todo, index) in sortedTasks" :key="index" appear mode="out-in">
       <li class="list-group-item py-3">
         <div>
@@ -22,8 +22,8 @@
       }
     },
     computed:{
-      sortedTasks: function(){
-        let sorted = this.todoList.slice()
+      sortedTasks(){
+        const sorted = this.$store.state.tasks
         return sorted.sort(function(a, b){
           if (a.title < b.title) return -1
           if (a.title > b.title) return 1
@@ -34,7 +34,7 @@
     },
     methods:{
       completeTask(task){
-        task.completed = !task.completed
+        this.$store.commit('completeTask', { task })
       }
     }
   }

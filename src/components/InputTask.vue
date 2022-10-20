@@ -15,16 +15,11 @@
 
   export default {
     name: "InputTask",
-    data(){
-      return{
-
-      }
-    },
     methods: {
       addTask($event){
         let value = $event.target.value
         let task = value != '' ? this.createTask(value) : alert('Preencha o campo, por favor.')
-        this.broadCast(task)
+        this.$store.commit('addTask', { task })
         this.clearField($event)
       },
       createTask(value){
@@ -34,9 +29,7 @@
         
         return task
       },
-      broadCast(task){
-        this.$emit('newTask', task)
-      },
+      
       clearField(){
         this.$el.querySelector("input").value = ''
       }

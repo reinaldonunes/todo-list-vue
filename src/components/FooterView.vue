@@ -1,13 +1,12 @@
 <template>
-  <footer>
+  <footer class="d-grid border">
     <slot></slot>
-    <slot name="cep"></slot>
   </footer>
 </template>
 
 <script>
   export default {
-    name: "FooterView"
+    name: "FooterView",
   }
 </script>
 
@@ -20,5 +19,9 @@
     text-align:center;
     padding: 40px 0 30px 0;
     background:#fff;
+    line-height:50%;
+  }
+  footer a{
+    text-decoration:none;
   }
 </style>
