@@ -1,12 +1,12 @@
 <template>
-    <div>
+    <section class="taskView">
         <header class="container text-center pt-5 pb-2">
             <h1 class="fw-normal text-primary h-plus-size">Tarefas</h1>
             <InputTask @newTask="addTask"></InputTask>
         </header>
         <TaskList :todoList="tasks"></TaskList>
         <router-link to="/cep" class="text-decoration-none m-auto d-block text-secondary" style="width:fit-content">Verificar CEP</router-link>
-    </div>
+    </section>
 </template>
 
 <script>

@@ -1,6 +1,8 @@
 <template>
   <section id="app">
-    <router-view></router-view>
+    <transition mode="out-in">
+      <router-view></router-view>
+    </transition>
   </section>
 </template>
 
@@ -26,5 +28,24 @@
   .h-plus-size{
     letter-spacing: -4px;
     font-size:4.5rem;
+  }
+
+  /* transitions */
+  .v-enter,
+  .v-leave-to {
+  opacity:0
+  }
+  .v-enter {
+  -webkit-transform:translate3d(0,-20px,0);
+  transform:translate3d(0,-20px,0)
+  }
+  .v-leave-to {
+  -webkit-transform:translate3d(0,20px,0);
+  transform:translate3d(0,20px,0)
+  }
+  .v-enter-active,
+  .v-leave-active {
+  -webkit-transition:all .3s;
+  transition:all .3s
   }
 </style>
