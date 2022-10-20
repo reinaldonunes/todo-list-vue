@@ -20,13 +20,24 @@
       }
     },
     methods: {
-      addTask($event){
-        let value = $event.target.value
+      createTask(value){
         let task = new Task()
         task.completed = false
         task.title = value
+        
+        return task
+      },
+      clearField(){
+        this.$el.querySelector("input").value = ''
+      },
+      broadCast(task){
         this.$emit('newTask', task)
-        $event.target.value = ''
+      },
+      addTask($event){
+        let value = $event.target.value
+        let task = this.createTask(value)
+        this.broadCast(task)
+        this.clearField($event)
       }
     }
   }
