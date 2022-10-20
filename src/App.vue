@@ -3,12 +3,24 @@
     <transition mode="out-in">
       <router-view></router-view>
     </transition>
+    <FooterView>&copy; Alguns direitos reservados - ToDo List License</FooterView>
   </section>
 </template>
 
 <script>
+  import FooterView from '@/components/FooterView.vue';
+
   export default {
     name: 'App',
+    data(){
+      return{
+        showDataFooter: ''
+      }
+    },
+    components: {
+        FooterView
+    }
+
   }
 </script>
 

@@ -5,8 +5,7 @@
             <InputTask @newTask="addTask"></InputTask>
         </header>
         <TaskList :todoList="tasks"></TaskList>
-        <router-link to="/cep" class="text-decoration-none m-auto d-block text-secondary" style="width:fit-content">Verificar CEP</router-link>
-    </section>
+        <router-link to="/cep" class="text-decoration-none m-auto d-block text-secondary" style="width:fit-content">Verificar CEP</router-link>    </section>
 </template>
 
 <script>
@@ -17,7 +16,7 @@
         name: "TaskView",
         components: {
             InputTask,
-            TaskList
+            TaskList,
         },
         data(){
             return{
